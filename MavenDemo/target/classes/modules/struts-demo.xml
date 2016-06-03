@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="jdubp-default" extends="struts-default">
+		<global-results>
+			<result name="index">/index.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="sqlException" exception="java.sql.SQLException"></exception-mapping>
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+
+	<package name="Demo" namespace="/Demo" extends="jdubp-default">
+		<default-interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="*/*" class="com.jandar.demo.web.{1}Action"
+			method="{2}">
+			<result name="{2}">/demo/Demo/list.jsp</result>
+		</action>
+	</package>
+	
+</struts>
